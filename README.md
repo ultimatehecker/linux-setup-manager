@@ -1,2 +1,2 @@
-# ubuntu-setup-manager
-ubuntu-setup-manager
+# linux-setup-manager
+linux-setup-manager

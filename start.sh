@@ -3,7 +3,7 @@
 # Install apt packages
 echo "Installing apt packages..."
 sudo apt update
-sudo apt install curl ffmpeg g++ gcc gimp git htop mlocate mpv ncdu neofetch net-tools python3 python3-pip steam tmux tree vim vlc wget apt-transport-https software-properties-common clang cmake libgtk-3-dev ninja-build pkg-config unzip -y
+sudo apt install curl ffmpeg g++ gcc gimp git htop mlocate mpv ncdu neofetch net-tools python3 python3-pip steam tmux tree vim vlc wget apt-transport-https software-properties-common clang cmake libgtk-3-dev ninja-build pkg-config unzip zram-config -y
 
 # Install virtulization software
 echo "Installing virtualization software."
@@ -199,9 +199,30 @@ sudo pip3 install protonvpn-cli
 sudo protonvpn init
 sudo protonvpn c -f
 
+# Install preload (speeds up application startup)
+echo "Installing preload."
+sudo apt install preload -y
+
+# Reduce overheating
+echo "Reducing overheating prevention using TLP."
+sudo apt update
+sudo apt install tlp tlp-rdw -y
+sudo tlp start
+
+sudo apt install indicator-cpufreq -y
+
+# Configure tasks that need to be done manually
+for i in {60..1}
+do
+echo "Before system reboot make sure to update these:"
+echo "1. Remove language support from apt-update - sudo gedit /etc/apt/apt.conf.d/00aptitude and change: Acquire::Languages "none";"
+echo "2. Update GRUB load times - sudo gedit /etc/default/grub & and change: GRUB_TIMEOUT=2"
+echo "3. Update GRUB - sudo update-grub"
+done
+
 # Upgrade packages
 echo "Upgrading packages"
-sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+sudo apt update && sudo apt upgrade -y && sudo apt autoclean -y && sudo apt clean -y && sudo apt autoremove -y
 sudo snap refresh
 flutter upgrade
 
@@ -211,4 +232,5 @@ do
 echo -e "\e[41mWARNING: Rebooting in $i seconds! Press CTRL + C to cancel.\e[0m"
 sleep 1s
 done
+
 reboot

@@ -3,7 +3,7 @@
 # Install apt packages
 echo "Installing apt packages..."
 sudo apt update
-sudo apt install curl ffmpeg g++ gcc gimp git htop mlocate mpv ncdu neofetch net-tools python3 python3-pip steam tmux tree vim vlc wget apt-transport-https software-properties-common clang cmake libgtk-3-dev ninja-build pkg-config -y
+sudo apt install curl ffmpeg g++ gcc gimp git htop mlocate mpv ncdu neofetch net-tools python3 python3-pip steam tmux tree vim vlc wget apt-transport-https software-properties-common clang cmake libgtk-3-dev ninja-build pkg-config unzip -y
 
 # Install virtulization software
 echo "Installing virtualization software."
@@ -32,6 +32,16 @@ wget -O WPILib.tar.gz https://github.com/wpilibsuite/allwpilib/releases/download
 tar -xf WPILib.tar.gz
 cd WPILib/
 ./WPILibInstaller
+
+# Intergrate WPILib with Pheonix Tuner X
+echo "Intergrating WPILib with Pheonix Tuner X."
+cd ~
+wget -O PheonixTunerX.zip https://github.com/CrossTheRoadElec/Phoenix-Releases/releases/download/v5.30.4.2/CTRE_Phoenix_FRC_Linux_5.30.4.zip
+unzip PheonixTunerX.zip
+cd PheonixTunerX/
+mv maven/ ~/WPILib/2023
+mv vendordeps/ ~/WPILib/2023
+cd ~
 
 # Install Android Studio
 echo "Installing Android Studio."
@@ -193,6 +203,7 @@ sudo protonvpn c -f
 echo "Upgrading packages"
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
 sudo snap refresh
+flutter upgrade
 
 # Reboot
 for i in {5..1}

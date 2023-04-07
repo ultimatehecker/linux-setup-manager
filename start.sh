@@ -122,6 +122,24 @@ wget -O gdlauncher.deb https://github.com/gorilla-devs/GDLauncher/releases/downl
 sudo dpkg --install gdlauncher.deb
 cd ~
 
+# Install Wine
+echo "Installing Wine."
+sudo dpkg --add-architecture i386
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+sudo apt install --install-recommends winehq-staging -y
+
+# Install Grapejuice
+echo "Installing Grapejuice."
+cd Downloads/
+sudo dpkg --add-architecture i386
+curl https://gitlab.com/brinkervii/grapejuice/-/raw/master/ci_scripts/signing_keys/public_key.gpg | sudo tee /usr/share/keyrings/grapejuice-archive-keyring.gpg
+sudo tee /etc/apt/sources.list.d/grapejuice.list <<< 'deb [signed-by=/usr/share/keyrings/grapejuice-archive-keyring.gpg] https://brinkervii.gitlab.io/grapejuice/repositories/debian/ universal main'
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y grapejuice
+
+
 # Install RPI Imager
 echo "Installing RPI Imager."
 cd Downloads/

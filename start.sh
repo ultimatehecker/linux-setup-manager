@@ -3,7 +3,7 @@
 # Install apt packages
 echo "Installing apt packages..."
 sudo apt update
-sudo apt install curl ffmpeg g++ gcc gimp git htop mlocate mpv ncdu neofetch net-tools python3 python3-pip steam tmux tree vim vlc wget apt-transport-https software-properties-common clang cmake libgtk-3-dev ninja-build pkg-config unzip zram-config -y
+sudo apt install curl ffmpeg g++ gcc gimp git htop mlocate mpv ncdu neofetch net-tools python3 python3-pip steam tmux tree vim vlc wget apt-transport-https software-properties-common clang cmake libgtk-3-dev ninja-build pkg-config unzip zram-config switcheroo-control -y
 
 # Install virtulization software
 echo "Installing virtualization software."

@@ -27,6 +27,7 @@ echo "Installing OpenJDK."
 sudo apt install openjdk-17-jdk openjdk-17-source openjdk-17-doc -y
 
 # Install WPILib
+cd ~
 echo "Installing WPILib for FRC development."
 wget -O WPILib.tar.gz https://github.com/wpilibsuite/allwpilib/releases/download/v2023.4.3/WPILib_Linux-2023.4.3.tar.gz
 tar -xf WPILib.tar.gz
@@ -160,7 +161,6 @@ sudo apt install --install-recommends winehq-staging -y
 
 # Install Grapejuice
 echo "Installing Grapejuice."
-cd Downloads/
 sudo dpkg --add-architecture i386
 curl https://gitlab.com/brinkervii/grapejuice/-/raw/master/ci_scripts/signing_keys/public_key.gpg | sudo tee /usr/share/keyrings/grapejuice-archive-keyring.gpg
 sudo tee /etc/apt/sources.list.d/grapejuice.list <<< 'deb [signed-by=/usr/share/keyrings/grapejuice-archive-keyring.gpg] https://brinkervii.gitlab.io/grapejuice/repositories/debian/ universal main'

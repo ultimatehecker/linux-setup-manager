@@ -20,7 +20,7 @@ install_rhel() {
   # Install dnf packages
   echo "Installing dnf packages."
   sudo dnf update -y
-  sudo dnf install akmod-nvidia alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop java-17-openjdk-* mpv ncdu neofetch nmap nodejs nvtop obs-studio rust vlc steam yt-dlp -y
+  sudo dnf install akmod-nvidia alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop mpv ncdu neofetch nmap nodejs nvtop obs-studio unzip rust vlc steam yt-dlp -y
 
   # Multimedia codecs
   sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
@@ -73,6 +73,14 @@ install_rhel() {
   sudo chmod 777 /opt/idea/
   sudo mv idea-*/* /opt/idea/
   sudo ln -sf /opt/idea/bin/idea.sh /bin/intellijidea-ue
+
+  # Install Java
+  echo "Installing Java."
+  sudo dnf install java-1.8.0-openjdk.x86_64
+  sudo dnf install java-11-openjdk.x86_64
+  sudo dnf install java-11-openjdk-devel.x86_64
+  sudo dnf install java-17-openjdk-*
+  echo "Use the following command to switch between Java versions: sudo alternatives --config java"
 
   # Install WPILib
   cd ~

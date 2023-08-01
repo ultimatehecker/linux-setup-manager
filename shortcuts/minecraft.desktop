@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/opt/minecraft-launcher/minecraft-launcher
+Name=Minecraft
+Icon=/usr/share/icons/Candy/apps/scalable/minecraft.svg

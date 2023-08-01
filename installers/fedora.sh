@@ -34,9 +34,18 @@ echo "Installing Discord."
 wget -O discord.tar.gz "https://discord.com/api/download?platform=linux&format=tar.gz"
 tar -xf discord.tar.gz
 sudo mv Discord /opt/
-sudo ln -s /opt/Discord/Discord /usr/bin/Discord
-sudo cp ../shortcuts/discord.desktop /usr/share/applications/
 
+# Install Minecraft
+echo "Installing Minecraft."
+wget -O minecraft.tar.gz https://launcher.mojang.com/download/Minecraft.tar.gz
+tar -xf minecraft.tar.gz
+sudo mv minecraft-launcher /opt/
+
+# Install ONLYOFFICE
+echo "Installing ONLYOFFICE."
+sudo dnf install https://download.onlyoffice.com/repo/centos/main/noarch/onlyoffice-repo.noarch.rpm
+sudo yum install epel-release
+sudo yum install onlyoffice-desktopeditors -y
 
 # GNOME Extensions
 sudo dnf install gnome-shell-extension-appindicator gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-openweather -y
@@ -49,9 +58,7 @@ echo "Vitals:                   https://extensions.gnome.org/extension/1460/vita
 # Non-automated installs
 echo "Manually install these programs:"
 echo "Bitwarden:    https://bitwarden.com/download/"
-echo "Discord:      https://discord.com"
 echo "IntelliJ:     https://www.jetbrains.com/idea/download/?section=linux"
-echo "Minecraft:    https://www.minecraft.net/en-us/download"
 echo "Postman:      https://www.postman.com/downloads/"
 echo "ProtonVPN:    https://protonvpn.com/support/official-linux-vpn-fedora/"
 echo "VS Code:      https://code.visualstudio.com/Download"

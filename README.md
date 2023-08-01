@@ -8,14 +8,18 @@ Setup is quite simple, first step is to clone the repository (it is reccomended 
 git clone https://github.com/ultimatehecker/linux-setup-manager.git
 ```
 
-After cloning the repository, go to the root folder and give all permissions to the inital start file:
+After cloning the repository, open the folder in VSCode, and edit the following code to meet your needs. The inital code is located in the `setup.sh` file, which asks for what operating system you are on. 
+
+Once you have edited the code to meet your needs, you can run the script by running the following command:
 
 ```bash
-chmod +x setup.sh
+bash setup.sh
 ```
 
-Once all permissions are given, you can run the script by doing:
+### Upcoming Features
 
-```bash
-./setup.sh
-```
+- [ ] Arch Support
+- [ ] More Software
+- [ ] More Customization
+- [ ] More Operating Systems (not making myself)
+- [ ] Selective Software Installation

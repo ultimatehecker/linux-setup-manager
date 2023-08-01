@@ -74,6 +74,24 @@ install_rhel() {
   sudo mv idea-*/* /opt/idea/
   sudo ln -sf /opt/idea/bin/idea.sh /bin/intellijidea-ue
 
+  # Install WPILib
+  cd ~
+  echo "Installing WPILib for FRC development."
+  wget -O WPILib.tar.gz https://github.com/wpilibsuite/allwpilib/releases/download/v2023.4.3/WPILib_Linux-2023.4.3.tar.gz
+  tar -xf WPILib.tar.gz
+  cd WPILib/
+  ./WPILibInstaller
+
+  # Intergrate WPILib with Pheonix Tuner X
+  echo "Intergrating WPILib with Pheonix Tuner X."
+  cd ~
+  wget -O PheonixTunerX.zip https://github.com/CrossTheRoadElec/Phoenix-Releases/releases/download/v5.30.4.2/CTRE_Phoenix_FRC_Linux_5.30.4.zip
+  unzip PheonixTunerX.zip
+  cd PheonixTunerX/
+  mv maven/ ~/WPILib/2023
+  mv vendordeps/ ~/WPILib/2023
+  cd ~
+
   # Install CLion
   echo "Installing CLion."
   wget -O clion.tar.gz https://download.jetbrains.com/cpp/CLion-2023.2.tar.gz

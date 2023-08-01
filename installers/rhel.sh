@@ -20,7 +20,7 @@ install_rhel() {
   # Install dnf packages
   echo "Installing dnf packages."
   sudo dnf update -y
-  sudo dnf install akmod-nvidia alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop mpv ncdu neofetch nmap nodejs nvtop obs-studio unzip rust vlc steam yt-dlp -y
+  sudo dnf install akmod-nvidia alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop mpv ncdu neofetch nmap nvtop obs-studio unzip rust vlc steam yt-dlp -y
 
   # Multimedia codecs
   sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
@@ -115,6 +115,12 @@ install_rhel() {
   sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
   printf "[vscode]\nname=packages.microsoft.com\nbaseurl=https://packages.microsoft.com/yumrepos/vscode/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscode.repo
   sudo dnf install code -y
+
+  # Install Node.js
+  echo "Installing Node.js."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  nvm install --lts
+  nvm use --lts
 
   # Install ProtonVPN
   echo "Installing ProtonVPN."

@@ -38,7 +38,26 @@ install_debian() {
   sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   sudo docker run hello-world
 
-  # TARBALL
+  # TARBALL - ~
+
+  # Install WPILib
+  echo "Installing WPILib for FRC development."
+  cd ~
+  wget -O WPILib.tar.gz https://github.com/wpilibsuite/allwpilib/releases/download/v2023.4.3/WPILib_Linux-2023.4.3.tar.gz
+  tar -xvf WPILib.tar.gz
+  cd WPILib/
+  ./WPILibInstaller
+
+  # Intergrate WPILib with Pheonix Tuner X
+  echo "Intergrating WPILib with Pheonix Tuner X."
+  cd ~
+  wget -O PheonixTunerX.zip https://github.com/CrossTheRoadElec/Phoenix-Releases/releases/download/v5.30.4.2/CTRE_Phoenix_FRC_Linux_5.30.4.zip
+  unzip PheonixTunerX.zip
+  cd PheonixTunerX/
+  mv maven/ ~/WPILib/2023
+  mv vendordeps/ ~/WPILib/2023
+
+  # TARBALL - ~/Downloads
 
   # Install Android Studio
   echo "Installing Android Studio."
@@ -71,23 +90,6 @@ install_debian() {
   tar -xvf postman.tar.gz
   cd postman/
   ./Postman
-
-  # Install WPILib
-  echo "Installing WPILib for FRC development."
-  cd ~/Downloads
-  wget -O WPILib.tar.gz https://github.com/wpilibsuite/allwpilib/releases/download/v2023.4.3/WPILib_Linux-2023.4.3.tar.gz
-  tar -xvf WPILib.tar.gz
-  cd WPILib/
-  ./WPILibInstaller
-
-  # Intergrate WPILib with Pheonix Tuner X
-  echo "Intergrating WPILib with Pheonix Tuner X."
-  cd ~/Downloads
-  wget -O PheonixTunerX.zip https://github.com/CrossTheRoadElec/Phoenix-Releases/releases/download/v5.30.4.2/CTRE_Phoenix_FRC_Linux_5.30.4.zip
-  unzip PheonixTunerX.zip
-  cd PheonixTunerX/
-  mv maven/ ~/WPILib/2023
-  mv vendordeps/ ~/WPILib/2023
 
   # DPKG
   cd ~/Downloads

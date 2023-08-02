@@ -19,7 +19,7 @@ install_rhel() {
 
   # Install dnf packages
   echo "Installing dnf packages."
-  sudo dnf update -y
+  sudo dnf check-update -y
   sudo dnf install akmod-nvidia alien audacity cargo dconf-editor deja-dup ffmpeg-free gcc gcc-c++ gimp gnome-extensions-app gnome-tweaks htop mpv ncdu neofetch nmap nvtop obs-studio rust steam thunderbird unzip vlc yt-dlp -y
 
   # Multimedia codecs
@@ -152,6 +152,8 @@ install_rhel() {
   echo "Clipboard History:        https://extensions.gnome.org/extension/4839/clipboard-history/"
   echo "Extension List:           https://extensions.gnome.org/extension/3088/extension-list/"
   echo "Vitals:                   https://extensions.gnome.org/extension/1460/vitals/"
+
+  sudo dnf upgrade -y && sudo dnf autoremove -y
 
   read -rsp $'Press any key to continue...\n' -n 1 key
 
